@@ -1,0 +1,206 @@
+:root {
+    --bg-color: #E0F7FA;
+    --primary: #FFD54F; /* Yellow */
+    --secondary: #4FC3F7; /* Blue */
+    --accent: #81C784; /* Green */
+    --danger: #E57373; /* Red */
+    --text: #37474F;
+    --white: #ffffff;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: var(--bg-color);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+    user-select: none;
+}
+
+#app {
+    width: 100%;
+    max-width: 600px;
+    background: var(--white);
+    border-radius: 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    overflow: hidden;
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    border: 8px solid var(--primary);
+}
+
+/* --- Header & Logo --- */
+header {
+    background: var(--primary);
+    padding: 15px;
+    text-align: center;
+    border-bottom: 5px solid #FBC02D;
+}
+
+h1 {
+    font-family: 'Fredoka One', cursive;
+    color: var(--text);
+    margin: 0;
+    font-size: 1.8rem;
+    text-shadow: 2px 2px 0px #fff;
+}
+
+.logo-area {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.logo-area h1 { font-size: 3rem; margin-bottom: 10px; }
+.logo-area p { font-size: 1.5rem; color: #555; }
+
+/* --- Buttons --- */
+.big-btn {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 20px 40px;
+    border-radius: 50px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 6px 0 #388E3C;
+    transition: transform 0.1s;
+    margin-top: 30px;
+}
+
+.big-btn:active {
+    transform: translateY(6px);
+    box-shadow: none;
+}
+
+.back-btn {
+    background: #90A4AE;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+/* --- Screens --- */
+.screen {
+    padding: 20px;
+    flex: 1;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 0.5s ease;
+}
+
+.screen.active { display: flex; }
+
+/* --- Grids --- */
+.level-grid, .game-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.level-card, .game-card {
+    background: var(--white);
+    border: 3px solid #eee;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.level-card:hover, .game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-color: var(--secondary);
+}
+
+.level-icon { font-size: 3rem; margin-bottom: 10px; display: block; }
+.level-title, .game-title { font-weight: bold; color: var(--text); font-size: 1.1rem; }
+
+/* --- Game Elements --- */
+.question-box {
+    background: #F1F8E9;
+    border: 2px dashed var(--accent);
+    border-radius: 15px;
+    padding: 20px;
+    width: 100%;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 1.3rem;
+    color: var(--text);
+}
+
+.story-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    background: #FFF3E0;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border-left: 5px solid var(--primary);
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    width: 100%;
+}
+
+.option-btn {
+    background: var(--secondary);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #0288D1;
+    transition: transform 0.1s;
+}
+
+.option-btn:active { transform: translateY(4px); box-shadow: none; }
+.option-btn.correct { background: var(--accent) !important; box-shadow: 0 4px 0 #388E3C !important; }
+.option-btn.wrong { background: var(--danger) !important; box-shadow: 0 4px 0 #C62828 !important; }
+
+/* --- Letter Hunt --- */
+.letter-grid { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+.letter-tile {
+    width: 50px; height: 50px; background: var(--white);
+    border: 2px solid var(--text); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; font-weight: bold; cursor: pointer;
+}
+.letter-tile.selected { background: var(--primary); border-color: var(--primary); transform: scale(1.1); }
+
+/* --- Drag and Drop --- */
+.drag-area { display: flex; align-items: center; gap: 10px; font-size: 2rem; margin: 20px 0; background: #eee; padding: 10px; border-radius: 10px; width: 100%; justify-content: center; }
+.draggable { background: var(--primary); width: 50px; height: 50px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: bold; cursor: grab; border: 2px solid #FBC02D; touch-action: none; }
+.drop-zone { width: 50px; height: 50px; border: 2px dashed #999; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: #999; }
+
+/* --- Progress & Feedback --- */
+.progress-bar { width: 100%; height: 10px; background: #eee; border-radius: 5px; margin-bottom: 10px; overflow: hidden; }
+.progress-fill { height: 100%; background: var(--accent); width: 0%; transition: width 0.3s; }
+.feedback-msg { height: 30px; font-weight: bold; margin-top: 10px; font-size: 1.2rem; }
+.next-btn { background: var(--text); color: white; border: none; padding: 10px 30px; border-radius: 20px; font-size: 1.2rem; margin-top: 20px; cursor: pointer; display: none; }
+
+/* --- Animations --- */
+@keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+@keyframes shake { 0% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } 100% { transform: translateX(0); } }
+.shake { animation: shake 0.3s; }
+.confetti { position: absolute; width: 10px; height: 10px; background-color: #f00; animation: fall linear forwards; z-index: 999; }
+@keyframes fall { to { transform: translateY(100vh) rotate(720deg); } }

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrainBuddies - Fun Learning Games</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div id="app">
+    <!-- 1. START SCREEN -->
+    <div id="start-screen" class="screen active">
+        <div class="logo-area">
+            <h1>🧠 BrainBuddies</h1>
+            <p>Learn & Play!</p>
+        </div>
+        <button class="big-btn" onclick="goToLevelSelect()">Start Playing 🚀</button>
+    </div>
+
+    <!-- 2. LEVEL SELECT SCREEN -->
+    <div id="level-screen" class="screen">
+        <h2>Choose Your Grade</h2>
+        <div class="level-grid">
+            <div class="level-card" onclick="selectLevel('K')">
+                <span class="level-icon">🟡</span>
+                <span class="level-title">Kindergarten</span>
+            </div>
+            <div class="level-card" onclick="selectLevel('1')">
+                <span class="level-icon">🔵</span>
+                <span class="level-title">Grade 1</span>
+            </div>
+            <div class="level-card" onclick="selectLevel('2')">
+                <span class="level-icon">🟢</span>
+                <span class="level-title">Grade 2</span>
+            </div>
+            <div class="level-card" onclick="selectLevel('3')">
+                <span class="level-icon">🔴</span>
+                <span class="level-title">Grade 3</span>
+            </div>
+        </div>
+        <button class="back-btn" onclick="goHome()">Back</button>
+    </div>
+
+    <!-- 3. GAME SELECT SCREEN -->
+    <div id="game-select-screen" class="screen">
+        <h2 id="selected-grade-title">Select a Game</h2>
+        <div class="game-grid" id="game-grid">
+            <!-- Games injected here by JS -->
+        </div>
+        <button class="back-btn" onclick="goToLevelSelect()">Back</button>
+    </div>
+
+    <!-- 4. GAMEPLAY SCREEN -->
+    <div id="gameplay-screen" class="screen">
+        <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+        <div class="game-header">
+            <span id="game-title-display">Game Name</span>
+        </div>
+        
+        <div id="game-content" style="width: 100%; flex: 1; display: flex; flex-direction: column; justify-content: center;">
+            <!-- Dynamic Content -->
+        </div>
+
+        <div class="feedback-msg" id="feedback"></div>
+        <button class="next-btn" id="next-btn" onclick="nextQuestion()">Next ➡️</button>
+    </div>
+
+    <!-- 5. END SCREEN -->
+    <div id="end-screen" class="screen">
+        <h2 style="font-size: 2rem;">🎉 Great Job! 🎉</h2>
+        <div style="font-size: 5rem;">🏆</div>
+        <p>You finished the game!</p>
+        <button class="big-btn" onclick="goToLevelSelect()">Play Another Game</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
